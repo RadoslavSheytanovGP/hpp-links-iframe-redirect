@@ -1,7 +1,7 @@
 /**
  * Official Global Payments test-card catalog — single source of truth.
  *
- * Mirrors https://developer.globalpayments.com/gh-assets/markdown%3Aresources%3Atest-cards.md
+ * Mirrors https://developer.globalpayments.com/resources/test-cards
  * (fetched 2026-06-23). Each entry records the card as published AND how it can be
  * *verified* against this Hosted Payment Page (HPP) sample, which only ever does two
  * card-dependent things: render the GP-hosted card page, then read back the

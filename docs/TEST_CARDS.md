@@ -1,7 +1,7 @@
 # Test-Card Verification
 
 This sample is verified against the **official Global Payments test-card suite**
-([developer.globalpayments.com → Test Cards](https://developer.globalpayments.com/gh-assets/markdown%3Aresources%3Atest-cards.md)).
+([developer.globalpayments.com → Test Cards](https://developer.globalpayments.com/resources/test-cards)).
 The catalog is encoded in [`tests/test-cards.mjs`](../tests/test-cards.mjs) and driven by an
 automated harness, [`tests/verify-test-cards.mjs`](../tests/verify-test-cards.mjs), that runs
 every exercisable card through the **real merchant page → GP-hosted card entry → 3-D Secure
