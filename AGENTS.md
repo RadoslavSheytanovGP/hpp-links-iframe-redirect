@@ -35,7 +35,7 @@
 
 ### .NET (ASP.NET Core minimal API, direct GP API)
 - [`dotnet/Program.cs`](dotnet/Program.cs): `MapEndpoints()` registers the four routes; `GetTokenAsync()`, `BaseUrl()`, `CountryFor()`, `Apms()`, `Classify()`
-- [`dotnet/dotnet.csproj`](dotnet/dotnet.csproj): `DotEnv.Net` 3.2.1, net9.0; no GP SDK
+- [`dotnet/dotnet.csproj`](dotnet/dotnet.csproj): `DotEnv.Net` 3.2.1, net10.0; no GP SDK
 
 ### Frontend (one file, five copies)
 - `nodejs/index.html`, `python/index.html`, `php/index.html`, `java/src/main/webapp/index.html`, `dotnet/wwwroot/index.html` are byte-identical. Key functions: `readConfig()`, `proceed()`, `pollStatus()`, `openFullbleed()`, `handleReturn()`, `renderApiExplorer()`
