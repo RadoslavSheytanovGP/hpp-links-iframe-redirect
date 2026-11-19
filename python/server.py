@@ -26,11 +26,14 @@ from datetime import datetime, timedelta, timezone
 
 import requests
 from dotenv import load_dotenv
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 
 load_dotenv()
 
-app = Flask(__name__, static_folder='.')
+app = Flask(__name__, static_folder=None)
+
+# Only the page is public, not server.py, requirements.txt or .env
+PAGE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # In-memory ring-buffer for the live webhook event log (last 20 notifications)
 webhook_events = deque(maxlen=20)
@@ -165,7 +168,7 @@ def classify(status):
 # ─── GET / ───────────────────────────────────────────────────────────────────
 @app.route('/')
 def index():
-    return app.send_static_file('index.html')
+    return send_from_directory(PAGE_DIR, 'index.html')
 
 
 # ─── POST /create-hpp-link ───────────────────────────────────────────────────
