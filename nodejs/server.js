@@ -18,6 +18,7 @@
  */
 
 import express     from 'express';
+import { fileURLToPath } from 'url';
 import * as dotenv from 'dotenv';
 import crypto      from 'crypto';
 
@@ -44,7 +45,9 @@ function redactSecret(value) {
 // In-memory event ring for the UI webhook log (last 20 notifications)
 const webhookEvents = [];
 
-app.use(express.static('.'));
+// Serve the page and its own assets only, not the server code, package files or .env
+const indexFile = fileURLToPath(new URL('./index.html', import.meta.url));
+app.get(['/', '/index.html'], (req, res) => res.sendFile(indexFile));
 // Preserve the raw body for /webhook (needed for HMAC signature verification);
 // express.json() is mounted AFTER so it doesn't consume the stream first.
 app.use('/webhook', express.raw({ type: '*/*' }));
