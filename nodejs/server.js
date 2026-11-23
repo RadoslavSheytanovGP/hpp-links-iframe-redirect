@@ -19,6 +19,7 @@
 
 import express     from 'express';
 import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
 import * as dotenv from 'dotenv';
 import crypto      from 'crypto';
 
@@ -47,7 +48,8 @@ const webhookEvents = [];
 
 // Serve the page and its own assets only, not the server code, package files or .env
 const indexFile = fileURLToPath(new URL('./index.html', import.meta.url));
-app.get(['/', '/index.html'], (req, res) => res.sendFile(indexFile));
+const indexHtml = readFileSync(indexFile, 'utf8');
+app.get(['/', '/index.html'], (req, res) => res.type('html').send(indexHtml));
 // Preserve the raw body for /webhook (needed for HMAC signature verification);
 // express.json() is mounted AFTER so it doesn't consume the stream first.
 app.use('/webhook', express.raw({ type: '*/*' }));
